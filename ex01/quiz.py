@@ -17,4 +17,4 @@ def kaito(correct):
     if answer in correct:
         print("正解！")
     else:
-        print("出直してこい")
+        print("不正解！")
