@@ -1,8 +1,8 @@
-from logging import root
-from this import s
+
 import tkinter as tk
 import tkinter.messagebox as tkm
 import re                       #文字列の置換を行うために reメソッドをインポートした
+from random import choices 
 
 
 
@@ -34,16 +34,16 @@ if __name__ == "__main__":
     c = 0 #列番号
     #入力したボタンの数字を画面に表示
     entry = tk.Entry(root,justify="right",width=10, font=("Times New Roman",40))
-    entry.grid(row=0,column=0,columnspan=3)                                       #
-
+    entry.grid(row=0,column=0,columnspan=3)                                     
+    color = ["red","blue","yellow","green","pink","black"]
     #ボタンの位置確認
     for i,num in enumerate([9,8,7,6,5,4,3,2,1,0,"+","-","×","÷","="]):#引き算と掛け算、割り算
         button = tk.Button(root,
                            text=f"{num}", 
                            width=3,      #幅を変更 
                            height=1,
-                           bg= "blue",   #ボタンの背景色を青色に変更
-                           fg = "green", #ボタンの文字の色を変更
+                           bg= choices(color),   #ボタンの背景色を青色に変更
+                           fg = "white", #ボタンの文字の色を変更
                            font=("Times New Roman", 45)
                            )
         button.bind("<1>",button_click)
