@@ -11,13 +11,13 @@ def key_up(event):
 
 def main_proc():
     global cx,cy,mx,my
-    if key == "Up":
+    if key == "Up" and maze_bg[my-1][mx] == 0:
         my -= 1
-    if key == "Down":
+    if key == "Down" and maze_bg[my+1][mx] == 0:
         my += 1
-    if key == "Left":
+    if key == "Left" and maze_bg[my][mx-1] == 0:
         mx -= 1
-    if key == "Right":
+    if key == "Right" and maze_bg[my][mx+1] == 0:
         mx += 1
     else:
         pass
