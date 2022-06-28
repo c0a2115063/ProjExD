@@ -1,5 +1,5 @@
-from glob import glob
 import tkinter as tk
+import maze_maker as mm
 
 def key_down(event):
     global key
@@ -32,6 +32,8 @@ if __name__ == "__main__":
 
     Canvas = tk.Canvas(root,width=1500,height=900,bg="black")
     Canvas.pack()
+    maze_bg = mm.make_maze(15,9)#壁：1 / 床：2を表す二次元リスト
+    mm.show_maze(Canvas,maze_bg)#canvasにmaze_bgを描く
 
     bird = tk.PhotoImage(file="fig/6.png")
     cx,cy = 300,400
