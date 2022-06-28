@@ -10,18 +10,18 @@ def key_up(event):
     key = ""
 
 def main_proc():
-    global cx,cy
+    global cx,cy,mx,my
     if key == "Up":
-        cy -= 20
+        my -= 1
     if key == "Down":
-        cy += 20
+        my += 1
     if key == "Left":
-        cx -= 20
+        mx -= 1
     if key == "Right":
-        cx += 20
+        mx += 1
     else:
         pass
-
+    cx,cy = mx*100+50 , my*100+50
     Canvas.coords("bird",cx,cy)
     root.after(100,main_proc)
 
@@ -36,7 +36,8 @@ if __name__ == "__main__":
     mm.show_maze(Canvas,maze_bg)#canvasにmaze_bgを描く
 
     bird = tk.PhotoImage(file="fig/6.png")
-    cx,cy = 300,400
+    mx ,my = 1,1
+    cx,cy = 100+50,100+50
     Canvas.create_image(cx,cy,image=bird,tag="bird")
     root.bind("<KeyPress>",key_down)
     root.bind("<KeyRelease>",key_up)
