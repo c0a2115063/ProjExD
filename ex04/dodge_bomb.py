@@ -73,16 +73,16 @@ def main():
         key_states = pg.key.get_pressed()
 
         if key_states[pg.K_UP] == True:#y座標を-1
-            koukaton_rect.centery -= 5              ###こうかとんの加速度を５に変更
+            koukaton_rect.centery -= 8              ###こうかとんの加速度を５に変更
         
         if key_states[pg.K_DOWN] == True:#y座標を+1
-            koukaton_rect.centery += 5
+            koukaton_rect.centery += 8
         
         if key_states[pg.K_LEFT] == True:#x座標を-1
-            koukaton_rect.centerx -= 5 
+            koukaton_rect.centerx -= 8 
 
         if key_states[pg.K_RIGHT] == True:#x座標を+1
-            koukaton_rect.centerx += 5
+            koukaton_rect.centerx += 8
             ###こうかとんの画像を変更
             screen_sfc.blit(koukaton_sfc2,koukaton_rect)
 
@@ -92,16 +92,16 @@ def main():
         #練習7
         if check_bound(koukaton_rect,screen_rect) != (1,1):
             if key_states[pg.K_UP] == True:#y座標を+1
-                koukaton_rect.centery += 5
+                koukaton_rect.centery += 8
         
             if key_states[pg.K_DOWN] == True:#y座標を-1
-                koukaton_rect.centery -= 5
+                koukaton_rect.centery -= 8
             
             if key_states[pg.K_LEFT] == True:#x座標を+1
-                koukaton_rect.centerx += 5 
+                koukaton_rect.centerx += 8 
 
             if key_states[pg.K_RIGHT] == True:#x座標を-1
-                koukaton_rect.centerx -= 5
+                koukaton_rect.centerx -= 8
                 
         
         #練習６
