@@ -12,9 +12,15 @@ def main():
     bg_rect = bg_img.get_rect()
     screen_sfc.blit(bg_img,bg_rect)
 
+#課題3
+    koukaton_sfc = pg.image.load("fig/6.png")   #surface
+    koukaton_sfc = pg.transform.rotozoom(koukaton_sfc, 0, 2.0) #surface
+    koukaton_rect = koukaton_sfc.get_rect()     #rect
+    koukaton_rect.center = 900, 400
+
     while True:
         screen_sfc.blit(bg_img,bg_rect)
-
+        screen_sfc.blit(koukaton_sfc,koukaton_rect)
         #練習２
         for event in pg.event.get():    #イベントを繰り返して処理
             if event.type == pg.QUIT:   #ウインドウのXボタンがクリックされたら
