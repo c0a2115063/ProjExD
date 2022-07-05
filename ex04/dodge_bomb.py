@@ -27,19 +27,19 @@ def main():
     koukaton_rect.center = 900, 400
 
 #練習５：爆弾
-    bomb_sfc = pg.Surface((80,80))  #surface
+    bomb_sfc = pg.Surface((40,40))  #surface
 
     bomb_sfc.set_colorkey((0, 0 ,0))
-    pg.draw.circle(bomb_sfc, (255, 0, 0), (40, 40), 40)     #爆弾の大きさを変更
+    pg.draw.circle(bomb_sfc, (255, 0, 0), (20, 20), 20)     #爆弾の大きさを変更
 
     bomb_rect = bomb_sfc.get_rect()     #rect
     bomb_rect.centerx = randint(0, screen_rect.width)
     bomb_rect.centery = randint(0, screen_rect.height)
 
     ###緑色の爆弾追加
-    bomb_sfc2 = pg.Surface((80,80))  #surface
+    bomb_sfc2 = pg.Surface((60,60))  #surface
     bomb_sfc2.set_colorkey((0, 0 ,0))
-    pg.draw.circle(bomb_sfc2, (0, 0, 255), (40, 40), 40)     #爆弾の大きさを変更
+    pg.draw.circle(bomb_sfc2, (0, 0, 255), (30, 30), 30)     #爆弾の大きさを変更
 
     bomb_rect2 = bomb_sfc2.get_rect()     #rect
     bomb_rect2.centerx = randint(0, screen_rect.width)
