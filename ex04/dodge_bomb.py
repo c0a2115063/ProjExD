@@ -22,12 +22,16 @@ def main():
 #練習５：爆弾
     bomb_sfc = pg.Surface((20,20))  #surface
 
-    bomb_sfc.set_colorkey(0, 0)
+    bomb_sfc.set_colorkey((0, 0 ,0))
     pg.draw.circle(bomb_sfc, (255, 0, 0), (10, 10), 10)
 
     bomb_rect = bomb_sfc.get_rect()     #rect
     bomb_rect.centerx = randint(0, screen_rect.width)
     bomb_rect.centery = randint(0, screen_rect.height)
+    #練習6
+    vx,vy = +1 , +1
+
+    #練習６
 
     while True:
         screen_sfc.blit(bg_img,bg_rect)
@@ -53,6 +57,9 @@ def main():
             koukaton_rect.centerx += 1
 
         screen_sfc.blit(koukaton_sfc,koukaton_rect)
+        #練習６
+        bomb_rect.move_ip(vx,vy)
+        
         #練習5
         screen_sfc.blit(bomb_sfc,bomb_rect)
 
