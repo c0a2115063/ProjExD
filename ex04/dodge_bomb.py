@@ -82,8 +82,14 @@ def main():
 
         vx *= yoko
 
-        vy *= tate
-        
+        vy *= tate       
+
+        #練習8
+        if koukaton_rect.colliderect(bomb_rect):
+            return
+        if bomb_rect.colliderect(koukaton_rect):
+            return
+
         pg.display.update()
         clock.tick(1000)
 #練習７  
