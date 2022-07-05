@@ -1,3 +1,4 @@
+from random import randint
 import pygame as pg
 import sys
 
@@ -18,6 +19,16 @@ def main():
     koukaton_rect = koukaton_sfc.get_rect()     #rect
     koukaton_rect.center = 900, 400
 
+#練習５：爆弾
+    bomb_sfc = pg.Surface((20,20))  #surface
+
+    bomb_sfc.set_colorkey(0, 0)
+    pg.draw.circle(bomb_sfc, (255, 0, 0), (10, 10), 10)
+
+    bomb_rect = bomb_sfc.get_rect()     #rect
+    bomb_rect.centerx = randint(0, screen_rect.width)
+    bomb_rect.centery = randint(0, screen_rect.height)
+
     while True:
         screen_sfc.blit(bg_img,bg_rect)
         
@@ -28,7 +39,7 @@ def main():
 
         #練習4
         key_states = pg.key.get_pressed()
-        
+
         if key_states[pg.K_UP] == True:#y座標を-1
             koukaton_rect.centery -= 1
         
@@ -42,6 +53,9 @@ def main():
             koukaton_rect.centerx += 1
 
         screen_sfc.blit(koukaton_sfc,koukaton_rect)
+        #練習5
+        screen_sfc.blit(bomb_sfc,bomb_rect)
+
         pg.display.update()
         clock.tick(1000)
 
