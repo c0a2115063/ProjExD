@@ -28,10 +28,9 @@ def main():
     bomb_rect = bomb_sfc.get_rect()     #rect
     bomb_rect.centerx = randint(0, screen_rect.width)
     bomb_rect.centery = randint(0, screen_rect.height)
+
     #練習6
     vx,vy = +1 , +1
-
-    #練習６
 
     while True:
         screen_sfc.blit(bg_img,bg_rect)
@@ -55,16 +54,47 @@ def main():
         
         if key_states[pg.K_RIGHT] == True:#x座標を+1
             koukaton_rect.centerx += 1
+        
+        #練習7
+        if check_bound(koukaton_rect,screen_rect) != (1,1):
+            if key_states[pg.K_UP] == True:#y座標を-1
+                koukaton_rect.centery += 1
+        
+            if key_states[pg.K_DOWN] == True:#y座標を+1
+                koukaton_rect.centery -= 1
+            
+            if key_states[pg.K_LEFT] == True:#x座標を-1
+                koukaton_rect.centerx += 1 
+            
+            if key_states[pg.K_RIGHT] == True:#x座標を+1
+                koukaton_rect.centerx -= 1
 
         screen_sfc.blit(koukaton_sfc,koukaton_rect)
+        
         #練習６
         bomb_rect.move_ip(vx,vy)
         
         #練習5
         screen_sfc.blit(bomb_sfc,bomb_rect)
 
+        #練習7
+        yoko, tate = check_bound(bomb_rect,screen_rect)
+
+        vx *= yoko
+
+        vy *= tate
+        
         pg.display.update()
         clock.tick(1000)
+#練習７  
+def check_bound(rect,scr_rect):     #rect: こうかとんと爆弾のRect   scr_rect:スクリーンのRect
+    yoko,tate = +1,+1
+    if rect.left < scr_rect.left or scr_rect.right < rect.right :
+        yoko = -1
+    if rect.top < scr_rect.top or scr_rect.bottom < rect.bottom :
+        tate = -1
+    return yoko,tate
+
 
 
 
