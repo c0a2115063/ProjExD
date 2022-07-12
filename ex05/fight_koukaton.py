@@ -53,8 +53,6 @@ class Bomb():
         self.sfc.set_colorkey((0, 0, 0)) 
         pg.draw.circle(self.sfc, color, (10, 10), r)
         self.rct = self.sfc.get_rect() # Rect
-        #self.rct.centerx = random.randint(0, scr.rct.width)
-        #self.rct.centery = random.randint(0, scr.rct.height)
         self.rct.centerx = random.randint(0, scr.bgi_rct.width)
         self.rct.centery = random.randint(0, scr.bgi_rct.height)
         self.vx, self.vy = speed      # 練習6
@@ -72,6 +70,32 @@ class Bomb():
         self.vy *= tate
 
         self.blit(scr)
+
+class Bomb2():
+    def __init__(self,color,r,speed,scr:Screen):
+        # 練習5：爆弾
+        self.sfc = pg.Surface((2*r, 2*r)) # Surface
+        self.sfc.set_colorkey((0, 0, 0)) 
+        pg.draw.circle(self.sfc, color, (10, 10), r)
+        self.rct = self.sfc.get_rect() # Rect
+        self.rct.centerx = random.randint(0, scr.bgi_rct.width)
+        self.rct.centery = random.randint(0, scr.bgi_rct.height)
+        self.vx, self.vy = speed      # 練習6
+
+    def blit(self,scr:Screen):
+        scr.sfc.blit(self.sfc,self.rct)
+
+    def update(self,scr:Screen):
+        self.rct .move_ip(self.vx,self.vy)
+        # 練習5
+        self.sfc.blit(self.sfc, self.rct)
+        # 練習7
+        yoko, tate = check_bound(self.rct, scr.rct)
+        self.vx *= yoko
+        self.vy *= tate
+
+        self.blit(scr)
+
 
 class Missile():
     def __init__(self,image, kkt):
@@ -97,28 +121,7 @@ class Missile():
         #key_states = pg.key.get_pressed()
         self.rct.centerx -= 5
         self.blit(surface)
-        
 
-        ### 命中判定
-        #enemy_list = pg.sprite.spritecollide(self, self.enemy, True)
-
-        ### 命中した場合、画面にHITを表示
-        #if len(enemy_list) > 0:
-            #font = pygame.font.Font(None, FONT_SIZE)
-            #text = font.render("HIT", True, (96,255,96))
-            #surface.blit(text, [171,182])
-            #pygame.display.update()
-            #pygame.time.wait(MES_TIME)
-
-        ### 命中したか画面外に出た場合、ミサイルを消去
-        #if len(enemy_list) > 0 or self.rect.top < 0:
-            #self.kill()
-    
-        
-
-
-
-        
 def main():
     clock = pg.time.Clock()
     #練習1
@@ -128,6 +131,7 @@ def main():
     kkt.update(scr)
 
     bkd = Bomb((255,0,0), 10, (+5,+5),scr)
+    bkd2 = Bomb2((0,255,0), 20, (+5,+5),scr)
 
     missile = None 
 
@@ -152,10 +156,13 @@ def main():
         bkd.update(scr)
         bkd.blit(scr)
 
+        bkd2.update(scr)
+        bkd2.blit(scr)
+
+
         
 
         # 練習8
-        #if kkimg_rct.colliderect(bmimg_rct): return 
         if kkt.rct.colliderect(bkd.rct) :
             return
         
