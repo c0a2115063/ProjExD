@@ -75,7 +75,7 @@ def main():
     ball = Ball((255,0,0), 10, (+1.0,+1.0),screen)
 
     while True:
-        if GameOver_falg:
+        if GameOver_falg:  #ボールが最下点に達したら、GameOver_falgがTrueして、pygameが終了する
             return 
         else:    
             screen.blit()
